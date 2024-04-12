@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Re_Act_v2;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDbContext>(opcion => opcion.UseSqlServer(builder.Configuration.GetConnectionString("")));
 
 var app = builder.Build();
 
