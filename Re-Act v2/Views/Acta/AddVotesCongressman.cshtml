@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "📝 Procesamiento de actas - Diputados";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content text-center">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <div class="container-fluid mx-auto">
+                        <div class="row">
+                            <ol>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <P></P>
+                                                <h1>@ViewData["Title"]</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <h1>No implementado aún...</h1>
+                <p>Trabajamos lo más rápido que podemos...</p>
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </section>
+        </div>
+    </div><!-- /.container-fluid -->
+
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var colegioMesa = document.getElementById('colegioMesa');
+            colegioMesa.select();
+        });
+    </script>
+</body>
+</html>
