@@ -58,9 +58,9 @@
                     <div class="input-group mb-3">
                         <input id="passwordInput" type="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
+                            <button id="togglePasswordBtn" class="btn btn-outline-secondary" type="button">
+                                <span class="fas fa-eye" id="toggleIcon"></span>
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -74,6 +74,8 @@
                             </button>
                         </div>
                         <!-- /.col -->
+
+                        <div id="loadingSpinner" class="spinner-border" style="display: none;" role="status"></div>
                     </div>
 
                 </form>
@@ -96,8 +98,13 @@
 
 
     <script>
+        var spinner = document.getElementById("loadingSpinner");
+
         $(document).ready(function () {
+
             $("#btnLogin").click(function (event) {
+                spinner.style.display = "block";
+
                 event.preventDefault();
 
                 var userName = $("#userNameInput").val();
@@ -113,15 +120,16 @@
                             window.location.href = "/Home/Index";
                         } else {
                             toastr.error("Credenciales incorrectas");
+                            spinner.style.display = "none";
                         }
                     },
                     error: function (xhr, status, error) {
                         toastr.error("Ocurrió un error al iniciar sesión");
+                        spinner.style.display = "none";
                     }
                 });
             });
         });
-
 
         $(document).ready(function () {
             $("#btnCrearUsuario").click(function (event) {
@@ -148,6 +156,21 @@
                     }
                 });
             });
+        });
+
+        document.getElementById('togglePasswordBtn').addEventListener('click', function () {
+            var passwordInput = document.getElementById('passwordInput');
+            var toggleIcon = document.getElementById('toggleIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
         });
     </script>
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,17 +19,28 @@ namespace Re_Act_v2.Controllers
             _signInManager = signInManager;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult PassageForbidden()
         {
             return View();
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         #region C
+        [Authorize]
         public async Task<bool> CrearUsuarioAsync(string userName, string password)
         {
             var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
@@ -60,6 +72,7 @@ namespace Re_Act_v2.Controllers
 
         #endregion
         #region R
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(string userName, string password)
         {

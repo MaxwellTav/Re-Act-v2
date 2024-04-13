@@ -68,7 +68,6 @@ Insert Into PoliticalAlliance_Table Values (2, 5);
 
 -- #################### Todas las Vistas ####################
 
-Select * From PoliticalAlliance_Table;
 SELECT
     pa.PoliticalAlliance_ID As '#ID',
     pb.PoliticalParty_Name AS 'Partido político Beneficiado',
@@ -86,5 +85,6 @@ JOIN
 Select * From PoliticalParty_Table;
 Select * From Candidates_Table;
 Select * From Role_Table;
+Select * From AspNetUsers;
 
 -- #################### __________________ ####################
