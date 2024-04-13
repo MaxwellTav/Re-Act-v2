@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Página en blanco";
+    ViewData["Title"] = "ACCESO RESTRINGIDO";
 }
 
 <!DOCTYPE html>
@@ -14,13 +14,10 @@
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+    
+
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
@@ -40,28 +37,20 @@
 
             <!-- Main content -->
             <section class="content">
-                <!-- Default box -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Títulos...</h3>
+                <div class="error-page">
+                    <h2 class="headline text-warning" style="font-size: 7rem;">🚷</h2>
 
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
+                    <div class="error-content">
+                        <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Acceso restringido</h3>
+
+                        <p>
+                            No pudimos encontrar lo que buscas o no tienes acceso
+                            En todo caso vuelve atrás en el buscador.
+                        </p>
+
                     </div>
-                    <div class="card-body">
-                        Cuerpo de todo el formulario y vainita "u".
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        Pierre
-                    </div>
-                    <!-- /.card-footer-->
+                    <!-- /.error-content -->
                 </div>
-                <!-- /.card -->
-
             </section>
             <!-- /.content -->
         </div>

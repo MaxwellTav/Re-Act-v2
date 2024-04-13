@@ -1,5 +1,8 @@
 ﻿
---1. ######📝 ReAct v2 Data Base 📝######
+-- ######📝 ReAct v2 Data Base 📝######
+--Paso #1) Hay que hacer las migraciones en Visual Studio, en la consola, aquí las líneas.
+--"Add-Migration Inicial" y luego "Update-Database"
+--Luego procede.
 Create Database ReActDB;
 Use ReActDB;
 

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Re_Act_v2;
 
@@ -6,7 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationDbContext>(opcion => opcion.UseSqlServer(builder.Configuration.GetConnectionString("")));
+builder.Services.AddDbContext<ApplicationDbContext>(opcion => opcion.UseSqlServer(builder.Configuration.GetConnectionString("MaxDB")));
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -24,9 +30,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.MapGroup("/identity").MapIdentityApi<IdentityUser>();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

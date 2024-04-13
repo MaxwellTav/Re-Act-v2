@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -7,13 +11,18 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="~/plugins/toastr/toastr.min.css">
+
 </head>
-<body class="hold-transition login-page layout-fixed login-page">
+<body class="hold-transition layout-fixed login-page">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <div class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo">
@@ -39,7 +48,7 @@
 
                 <form action="#" method="post">
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="Cédula">
+                        <input id="userNameInput" type="text" class="form-control" placeholder="Usuario">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-id-card"></span>
@@ -47,7 +56,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input id="passwordInput" type="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -57,16 +66,16 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-4">
-                            <button class="bookmarkBtn">
-                              <span class="IconContainer">
-                                ✏
-                              </span>
-                              <p class="text">Entrar</p>
+                            <button id="btnLogin" class="bookmarkBtn">
+                                <span class="IconContainer">
+                                    ✏
+                                </span>
+                                <p class="text">Entrar</p>
                             </button>
                         </div>
                         <!-- /.col -->
                     </div>
-                    
+
                 </form>
             </div>
             <!-- /.card-body -->
@@ -80,5 +89,67 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btnLogin").click(function (event) {
+                event.preventDefault();
+
+                var userName = $("#userNameInput").val();
+                var password = $("#passwordInput").val();
+
+                $.ajax({
+                    url: "/Login/Login",
+                    type: "POST",
+                    contentType: "application/x-www-form-urlencoded",
+                    data: { userName: userName, password: password },
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = "/Home/Index";
+                        } else {
+                            toastr.error("Credenciales incorrectas");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        toastr.error("Ocurrió un error al iniciar sesión");
+                    }
+                });
+            });
+        });
+
+
+        $(document).ready(function () {
+            $("#btnCrearUsuario").click(function (event) {
+                event.preventDefault();
+
+                var userName = $("#userNameInput").val();
+                var password = $("#passwordInput").val();
+
+                $.ajax({
+                    url: "/Login/CrearUsuario",
+                    type: "POST",
+                    contentType: "application/x-www-form-urlencoded",
+                    data: { userName: userName, password: password },
+                    success: function (response) {
+                        if (response) {
+                            toastr.success("¡El usuario se ha creado con éxito!");
+                        } else {
+                            toastr.error("¡No se pudo crear el usuario!");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        var errorMessage = xhr.responseText;
+                        toastr.error("Ocurrió un error al crear el usuario: " + errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
