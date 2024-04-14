@@ -105,40 +105,7 @@
                     </ul>
                 </li>
 
-                @* Visualización *@
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-eye"></i>
-                        <p>
-                            Ver actas
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">3</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Presidenciales</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesSenator" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Senatoriales</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesCongressman" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Diputados</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                @* Visualización *@
+                @* Admin Tools *@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-toolbox"></i>
@@ -148,36 +115,65 @@
                             <span class="badge badge-info right">3</span>
                         </p>
                     </a>
+                    
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Usuarios</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
-                                <i class="far fa-address-book nav-icon"></i>
-                                <p>Roles</p>
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
+                                <i class="far fa-address-card nav-icon"></i>
+                                <p>Roles de usuario</p>
+                            </a>
+                        </li>
+
+                        <hr class="solid" style="margin-top: 0.5rem; margin-bottom: 0.5rem;" />
+
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>Candidatos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
+                                <i class="fa fa-chalkboard-teacher nav-icon"></i>
+                                <p>Partidos políticos</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
                                 <i class="far fa-address-book nav-icon"></i>
                                 <p>Mesas y colegios</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
-                                <i class="far fa-user-tie nav-icon"></i>
-                                <p>Candidatos</p>
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
+                                <i class="far fa-bookmark nav-icon"></i>
+                                <p>Rol político</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="NonImplementedYet" class="nav-link">
+                                <i class="far fa-handshake nav-icon"></i>
+                                <p>Alianzas</p>
+                            </a>
+                        </li>
+
+                        <hr class="solid" style="margin-top: 0.5rem; margin-bottom: 0.5rem;" />
                     </ul>
                 </li>
+
+                <hr class="white-divider">
+
                 <li class="nav-item">
                     <a id="logoutButton" href="#" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>

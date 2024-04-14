@@ -88,3 +88,9 @@ body {
 .login-page {
     background: linear-gradient(to right, #45258f, #7d3aae, #9b27af);
 }
+
+.white-divider {
+    border-top: 1px solid #ffffff; /* Define el color de la línea divisoria */
+    margin-top: 0.5rem; /* Define el margen superior */
+    margin-bottom: 0.5rem; /* Define el margen inferior */
+}

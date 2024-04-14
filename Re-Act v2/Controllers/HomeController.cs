@@ -21,5 +21,10 @@ namespace Re_Act_v2.Controllers
         {
             return View();
         }
+
+        public IActionResult NonImplementedYet()
+        {
+            return View();
+        }
     }
 }
