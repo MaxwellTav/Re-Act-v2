@@ -119,7 +119,8 @@
                         if (response.success) {
                             window.location.href = "/Home/Index";
                         } else {
-                            toastr.error("Credenciales incorrectas");
+                            toastr.warning("Credenciales incorrectas.");
+                            toastr.warning("¡Usuario inválido!");
                             spinner.style.display = "none";
                         }
                     },

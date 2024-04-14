@@ -8,8 +8,30 @@
             </div>
             <div class="info">
                 <a class="d-block" style="font-size:115%">@User.Identity.Name</a>
-                <a class="d-block" style="font-size:90%"><strong>No Implementado aún</strong></a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var roles = ((System.Security.Claims.ClaimsIdentity)User.Identity).Claims
+                    .Where(c => c.Type == System.Security.Claims.ClaimTypes.Role)
+                    .Select(c => c.Value);
+
+                    if (roles.Any())
+                    {
+                        foreach (var role in roles)
+                        {
+                            <a class="d-block" style="font-size:90%"><strong>@role ✔</strong></a>
+                        }
+                    }
+                    else
+                    {
+                        <a class="d-block" style="font-size:90%"><strong>Invitado 🔒</strong></a>
+                    }
+                }
+                else
+                {
+                    <a class="d-block" style="font-size:90%"><strong>Invitado - No autenticado 🔐</strong></a>
+                }
             </div>
+
         </div>
 
         @* <!-- Sidebar user (optional) -->
@@ -112,6 +134,46 @@
                             <a asp-controller="Acta" asp-action="AddVotesCongressman" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Diputados</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @* Visualización *@
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-toolbox"></i>
+                        <p>
+                            Admin Tools
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">3</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
+                                <i class="far fa-address-book nav-icon"></i>
+                                <p>Roles</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
+                                <i class="far fa-address-book nav-icon"></i>
+                                <p>Mesas y colegios</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Acta" asp-action="AddVotesPresident" class="nav-link">
+                                <i class="far fa-user-tie nav-icon"></i>
+                                <p>Candidatos</p>
                             </a>
                         </li>
                     </ul>

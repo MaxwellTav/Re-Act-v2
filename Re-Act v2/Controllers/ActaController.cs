@@ -8,19 +8,19 @@ namespace Re_Act_v2.Controllers
         public static int dummyCuantityCandidates = 34;
 
         #region C
-        [Authorize]
+        [Authorize(Roles = "Admin,PresidentialDataEntry")]
         public IActionResult AddVotesPresident()
         {
             return View(dummyCuantityCandidates);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,SenatorDataEntry")]
         public IActionResult AddVotesSenator()
         {
             return View(dummyCuantityCandidates);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,CongressmanDataEntry")]
         public IActionResult AddVotesCongressman()
         {
             return View(dummyCuantityCandidates);
